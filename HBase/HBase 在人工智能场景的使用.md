@@ -128,3 +128,5 @@ Result re=table.get(get);
 先加 微信号：iteblog
 
 注明云HBase交流
+
+详情请阅读原文：https://yq.aliyun.com/articles/672245
