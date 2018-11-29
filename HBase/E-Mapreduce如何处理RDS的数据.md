@@ -12,6 +12,7 @@
 进入数据集成的控制平台，创建一个Pipeline或者Ecs Pipeline
 在新创建的Pipeline中，新建作业。目前没有直接的页视图，可以直接使用JSON视图
 源类型选择Mysql，目标类型选择OSS，填写一些信息。再立即执行，脚本参考：
+
 {
     "type": "job",
     "traceId": "stream to stream job test",
@@ -48,6 +49,7 @@
         }
     }
 }
+
 2、编写hive脚本
 此部分可以参考文档：在Hive中使用OSS
 特别如果想登陆到机器上执行hive脚本，一定要 sudo su hadoop到hadoop账户下或者新建一个账号。不要在root下操作。
@@ -56,21 +58,29 @@
 目前E-Mapreduce镜像中没有直接提供sqoop，你可以登陆master机器，sudo su hadoop帐号下，再下载sqoop（master机器是可以访问互联网的）
 
 下载sqoop及mysql-connector-java，目前列出的地址可以访问，如果不能访问，请直接访问官方下载。
+
 //下载
+
 wget http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
 wget http://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.38.tar.gz
+
 //解压
+
 tar -xvf mysql-connector-java-5.1.38.tar.gz
 tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
+
 //把mysql-connector-java的jar拷贝到sqoop的lib中
 cp mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar sqoop-1.4.6.bin__hadoop-2.0.4-alpha/lib/
 执行命令，拷贝数据。sqoop有很多的用法，大家可以看下sqoop官方文档，或者google。
  ./sqoop-1.4.6.bin__hadoop-2.0.4-alpha/bin/sqoop import  --connect jdbc:mysql://rdsmcnlgxxxxxxx.mysql.rds.aliyuncs.com:3306/school --username yourMysqlusername--password yourMysqlPassword --table student --hive-import --hive-table school.student --target-dir student
+
 查询下
+
 hive> select count(*) from student;
 Query ID = hadoop_20160408180707_a3326bcd-3a06-433c-94ba-002a29bb71ab
 840
 Time taken: 25.898 seconds, Fetched: 1 row(s)
+
 四、可以直接连接mysql
 这一步是需要写一些代码的，在代码中可以直接配置访问mysql。
 
@@ -134,6 +144,7 @@ public class VisitMysql {
     </dependency>
   </dependencies>
 </project>
+
 注意
 RDS默认是拒绝访问的，所以需要在RDS中配置网络白名单。在数据安全性->添加白名单分组。
 如果是使用数据集成，则需要配置数据集成的IP地址，如果是使用sqoop或者直接相连，则需要配置E-Mapreduce的白名单(这个可以在集群的详情页看到)
