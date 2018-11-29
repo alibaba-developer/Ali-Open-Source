@@ -1,4 +1,4 @@
-Phoenix=HBase+SQL 让HBase插上了翅膀
+# Phoenix=HBase+SQL 让HBase插上了翅膀
 
 本期分享专家：张赟—阿里多模型数据库专家
 本期分享主题：Phoenix 基本介绍及二级索引
