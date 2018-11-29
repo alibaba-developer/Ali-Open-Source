@@ -57,4 +57,4 @@ create 'face', {NAME => 'c', IS_MOB => true, MOB_THRESHOLD => 2048}
  /**
 上面我们创建了名为 face 的表，IS_MOB 属性说明列簇 c 将启用 MOB 特性，MOB_THRESHOLD 是 MOB 文件大小的阈值，单位是字节，这里的设置说明文件大于 2k 的列都当做小文件存储。大家可能注意到上面原始方案中采用了 OSS 对象存储，那我们为什么不直接使用 OSS 存储人脸特征数据呢，如果有这个疑问，可以看看下面表的性能测试：
 
-原文链接：https://yq.aliyun.com/articles/673472
+详情请阅读原文：https://yq.aliyun.com/articles/673472
