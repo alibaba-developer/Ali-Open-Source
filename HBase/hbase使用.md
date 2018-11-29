@@ -1,4 +1,4 @@
-# base使用
+# Hbase使用
 
 Hbase 常用shell操作
 list
