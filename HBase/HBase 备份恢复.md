@@ -1,6 +1,7 @@
 # HBase 备份恢复
 
-Apsara HBase 备份恢复
+**Apsara HBase 备份恢复
+
 所有的数据库产品都有备份恢复，Apache HBase官方目前没有一个release版本的备份恢复功能，官网提出的方案和机制操作都是很复杂。所以阿里云赋能HBase的备份恢复能力并支持全量和增量的备份和恢复，同时具有高性能、低成本和低线上影响充分自动化。而且备份恢复是独立于HBase之外的模块，不影响HBase的正常使用，并且备份恢复模块有自有failover的能力，保证备份恢复的持续性。
 1.独立于Apsara-HBase的备份恢复模块，提供独立的模块支撑
 2.支持全量/增量恢复以及全量/增量恢复，高数据恢复精确度
@@ -21,6 +22,7 @@ Apsara HBase 备份恢复
 3.RPO(Recover Pointobjective)业务系统所能容忍的数据丢失量是1小时，二期会支持秒级
 4.数据可靠性高达11个9（99.9999999%）且OSS存储成本极低
 5.定期清理过期备份数据，可以降低备份数据的冗余
+
 **备份部分：全量备份**
 
 RS和MASTER的调度身份有所不同，如上图master节点会做snapshot的备份，RS节点做的是Hfile的备份，上转任务切分实现了两种方案 a) round robin近均匀策略 b) 基于short-circuit read的切分策略。使用failover机制保证失败重试，且基于Hfilelink，追踪hfile路径，保证读到数据。
@@ -38,8 +40,6 @@ RS和MASTER的调度身份有所不同，如上图master节点会做snapshot的�
 **阿里云HBase 备份恢复 vs 其他大数据数据库备份恢复**
 
 下面的表格是阿里Hbase和其它Hbase备份恢复的对比
-
-	DB备份恢复
 	
 备份
 	
@@ -64,3 +64,5 @@ Apache Cassandra
 需要恢复到备份对等的集群规模
 
 **文章来自：郭鹏——HBase生态+Spark社区大群 志愿者**
+
+详情请阅读原文：https://yq.aliyun.com/articles/673235
