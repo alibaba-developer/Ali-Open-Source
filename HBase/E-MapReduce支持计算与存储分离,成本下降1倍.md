@@ -18,10 +18,15 @@ Hadoop一出生就是存储与计算在一起的，前几年面试题中都问�
 
 性能：大约下降10%以内，对于一般的应用是可以接受的。后续详细说明。
 场景测试及数据
-测试的代码为：https://github.com/fengshenwu/spark-terasort/tree/master/src/main/scala/com/github/ehiggs/spark/terasort
+测试的代码为：
+
+https://github.com/fengshenwu/spark-terasort/tree/master/src/main/scala/com/github/ehiggs/spark/terasort
+
 集群规模：1 master 4cpu 16g 、8 Slave 4cpu 16g、每个slave节点250G*4 高效云盘
+
 测试spark脚本
+
  /opt/apps/spark-1.6.1-bin-hadoop2.7/bin/spark-submit  --master yarn --deploy-mode cluster --executor-memory 3G --num-executors 30    --conf spark.default.parallelism=800   --class  com.github.ehiggs.spark.terasort.TeraSort  spark-terasort-1.0-jar-with-dependencies.jar /data/teragen_100g /data/terasort_out_100g
-测试的性能图
+
 
 详情请阅读原文：https://yq.aliyun.com/articles/664786
